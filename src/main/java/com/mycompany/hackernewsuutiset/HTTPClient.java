@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 
 
 public class HTTPClient {
-    public static String callURL(String URLString) {
+    public String callURL(String URLString) {
 		StringBuilder sb = new StringBuilder();
 		URLConnection urlConn = null;
 		InputStreamReader in = null;
@@ -17,7 +17,7 @@ public class HTTPClient {
 			URL url = new URL(URLString);
 			urlConn = url.openConnection();
 			if (urlConn != null)
-				urlConn.setReadTimeout(60 * 1000);
+				urlConn.setReadTimeout(100 * 1000);
 			if (urlConn != null && urlConn.getInputStream() != null) {
 				in = new InputStreamReader(urlConn.getInputStream(),
 						Charset.defaultCharset());
